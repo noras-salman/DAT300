@@ -14,7 +14,7 @@ The structure is seperated to two directories:
 - (dayOfYear,weekday,minute,consumption) (OnlyWinter)
 - (dayOfYear,weekday,minute,consumption_past24hours,consumption) (OnlyWinter)
 #### Make three rooms into one from the dataset
-    -add the coloumns to make one
+    -add the coloumns to make one(Make total load)
 
 
 #### HourBased:"Total Hour consumption"
