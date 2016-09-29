@@ -38,7 +38,7 @@ alpha = 0.01;
 num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
-theta = zeros(3, 1);  %<<<=============UPDATE HERE IN CASE THERE IS A CHANGE IN DATA SET // TODO: MAKE IT DYNAMIC
+theta = zeros(3, 1);  %<<<=============UPDATE HERE IN CASE THERE IS A CHANGE IN DATA SET // TODO: MAKE IT DYNAMIC ***
 [theta, J_history] = gradientDescent(X, y, theta, alpha, num_iters);
 
 % Plot the convergence graph (COST FUNCTION )
