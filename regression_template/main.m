@@ -16,12 +16,12 @@ m = length(y);
 Xb=X;
 
 
-%% ================ Part 1: Feature Normalization ================
+%% ================ Part 1: Feature Scaling(Normalization) ================
 
 % Scale features and set them to zero mean
 fprintf('Normalizing Features ...\n');
 
-[X mu sigma] = featureNormalize(X);
+[X mu sigma] = featureScaling(X);
 
 % Add intercept term to X
 X = [ones(m, 1) X];
