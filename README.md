@@ -13,6 +13,9 @@ The structure is seperated to two directories:
 ### Create Diffrent Datasets:
 - (dayOfYear,weekday,minute,consumption) (OnlyWinter)
 - (dayOfYear,weekday,minute,consumption_past24hours,consumption) (OnlyWinter)
+#### Make three rooms into one from the dataset
+    -add the coloumns to make one
+
 
 #### HourBased:"Total Hour consumption"
 It could be usefull and more accurate to predict based on a total hour consumtion instead of using a minute to minute based prediction model.
