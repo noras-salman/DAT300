@@ -5,15 +5,26 @@
 clear ; close all; clc
 
 fprintf('Loading data ...\n');
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  CHANGE THIS FOR COMPARING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load Data
-data = load('basic123');
-X = data(:, 1:2);
-y = data(:, 3);
-m = length(y);
+data = load('_hour_basic_weekend');
+number_of_features=3;
 
+%% ========================
+X = data(:, 1:number_of_features);
+y = data(:, number_of_features+1);
+m = length(y);
+x_size=size(X, 2);
 %% Save this for plotting
 Xb=X;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  CHANGE THIS FOR COMPARING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+sample_range=1:168 ; % What to plot and compare from predicted and original data (Example 1:24 only first 24 hours)
+
+
 
 
 %% ================ Part 1: Feature Scaling(Normalization) ================
@@ -38,15 +49,15 @@ alpha = 0.01;
 num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
-theta = zeros(3, 1);  %<<<=============UPDATE HERE IN CASE THERE IS A CHANGE IN DATA SET // TODO: MAKE IT DYNAMIC ***
+theta = zeros(x_size+1, 1);  
 [theta, J_history] = gradientDescent(X, y, theta, alpha, num_iters);
 
 % Plot the convergence graph (COST FUNCTION )
-figure;
-subplot (3, 1, 1)
-plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
-xlabel('Number of iterations');
-ylabel('Cost J');
+%figure;
+%subplot (2, 1, 1)
+%plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+%xlabel('Number of iterations');
+%ylabel('Cost J');
 
 
 % Display gradient descent's result
@@ -56,24 +67,23 @@ fprintf('\n');
 
 
 %% ================ Part 3: Predict ================
-
-% USING THE SAME DATE USED FOR TRAINING TO CALCULATE DIFFERENCE (ERROR)
-weekday=Xb(:,1);
-timestamp=Xb(:,2);
-
-predict = [ones(m,1), (weekday-mu(:,1))/sigma(:,1) ,(timestamp-mu(:,2))/sigma(:,2)] *theta;
+% use Xb the original data
+predict = prediction(Xb,theta,sigma,mu);
 
 % =====================PLOT AND ANALYISIS===============
 error_diff=sum(y-predict);
 
-error_arr=[y(140:300) predict(140:300)];
+error_arr=[y(sample_range) predict(sample_range)];
 
 fprintf('error_diff= %f \',error_diff);
-subplot (3, 1, 2)
-plot(y(1:48))
 
-subplot (3, 1, 3)
-plot(predict(1:48))
+
+plot(y(sample_range))
+hold on
+
+
+
+plot(predict(sample_range),'r *','LineWidth',2)
 
 
 fprintf('Program paused. Press enter to continue.\n');
