@@ -11,8 +11,8 @@ The structure is seperated to two directories:
 
 
 ## DATASETS
-Final datasets could be found in the regression_template directory and they are:
-- hour_basic : (weekday,hour,total_load) constucted from 'winter2006-2007.txt'
+Final datasets constucted from 'winter2006-2007.txt' could be found in the regression_template directory and they are:
+- hour_basic : (weekday,hour,total_load) 
 - hour_weekend : (weekday,hour,weekend_marker,total_load)
 
 ## TODO
