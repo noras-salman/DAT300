@@ -13,13 +13,13 @@ The structure is seperated to two directories:
 ## DATASETS
 Final datasets could be found in the regression_template directory and they are:
 - hour_basic : (weekday,hour,total_load) constucted from 'winter2006-2007.txt'
-
+- hour_weekend : (weekday,hour,weekend_marker,total_load)
 ## TODO
 
 #### HourBased:"Total Hour load"
 It could be usefull "consedering the time-frame for the project" to predict based on a total hour consumtion instead of using a minute to minute based prediction model.
 - hour_basic : (weekday,hour,total_load)   "**COMPLETED**"
-- hour_weekend : (weekday,hour,weekend,total_load) : adds extra feature "weekend" is a value that state if its a weekday or weekend  "**COMPLETED**"
+- hour_weekend : (weekday,hour,weekend_marker,total_load) : adds extra feature "weekend_marker" is a value that state if its a weekday or weekend  "**COMPLETED**"
 
 - hour_basic_prev_hour : (weekday,hour,previous_hour,total_load) : adds extra feature "previous_hour"
 - hour_basic_prev_hour2 : (weekday,hour,previous_hour,previous_secound_hour,total_load) : adds extra feature "previous_secound_hour"
