@@ -17,7 +17,7 @@ Final datasets could be found in the regression_template directory and they are:
 ## TODO
 
 #### HourBased:"Total Hour load"
-It could be usefull and more accurate to predict based on a total hour consumtion instead of using a minute to minute based prediction model.
+It could be usefull "consedering the time-frame for the project" to predict based on a total hour consumtion instead of using a minute to minute based prediction model.
 - hour_basic : (weekday,hour,total_load)   "**COMPLETED**"
 - hour_weekend : (weekday,hour,weekend,total_load) : adds extra feature "weekend" is a value that state if its a weekday or weekend
 
