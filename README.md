@@ -27,8 +27,8 @@ It could be usefull "consedering the time-frame for the project" to predict base
 #### Sliding Window
 Because of the high non-linearizability nature of electric consumption .. 
 performing a sliding window prediction model could be a good idea to experment with.
--Each Day has a model
--Each 2 or 3 hours has a model for this day
+- Each Day has a model
+- Each 2 or 3 hours has a model for this day
 
 ### Error Analysis
 We run the algorithm on the trained data, plot them and calculate the error
