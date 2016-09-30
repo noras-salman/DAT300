@@ -14,6 +14,7 @@ The structure is seperated to two directories:
 Final datasets could be found in the regression_template directory and they are:
 - hour_basic : (weekday,hour,total_load) constucted from 'winter2006-2007.txt'
 - hour_weekend : (weekday,hour,weekend_marker,total_load)
+
 ## TODO
 
 #### HourBased:"Total Hour load"
