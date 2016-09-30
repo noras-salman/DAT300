@@ -100,7 +100,7 @@ with open(input_file) as f:
           weekend_marker=1
           if day_of_week in weekend:
             weekend_marker=2
-          file_output.write(str(day_of_week)+ ','+ str(current_hour+1)+','+ str(weekend_marker)+ ','+str(sum)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
+          file_output.write(str(day_of_week)+ ','+ str(current_hour+1)+','+ str(weekend_marker)+ ','+str(hour_load)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
           current_hour=int(hour)
           hour_load=sum       
 

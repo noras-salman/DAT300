@@ -98,7 +98,7 @@ with open(input_file) as f:
         else:
           active_count+=1
         
-          file_output.write(str(day_of_week)+ ','+ str(current_hour+1)+ ','+str(sum)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
+          file_output.write(str(day_of_week)+ ','+ str(current_hour+1)+ ','+str(hour_load)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
           current_hour=int(hour)
           hour_load=sum       
       
