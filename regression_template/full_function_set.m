@@ -1,16 +1,15 @@
-
+function full_function_set(data,feature_numbers,plot_option,sample_range)
 
 %% ============  Initialization And Load Data set
-%% Clear and Close Figures
-clear ; close all; clc
+
 
 fprintf('Loading data ...\n');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  CHANGE THIS FOR COMPARING
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load Data
-data = load('_hour_basic_weekend');
-number_of_features=2;
+
+number_of_features=feature_numbers;
 
 %% ========================
 X = data(:, 1:number_of_features);
@@ -19,10 +18,7 @@ m = length(y);
 x_size=size(X, 2);
 %% Save this for plotting
 Xb=X;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  CHANGE THIS FOR COMPARING
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-sample_range=1:24 ; % What to plot and compare from predicted and original data (Example 1:24 only first 24 hours)
+
 
 
 
@@ -78,13 +74,13 @@ error_arr=[y(sample_range) predict(sample_range)];
 fprintf('error_diff= %f \',error_diff);
 
 
-plot(y(sample_range))
+plot(y(sample_range),'b')
 hold on
 
 
 
-plot(predict(sample_range),'r *','LineWidth',2)
+plot(predict(sample_range),plot_option,'LineWidth',2)
 
 
 
-
+end

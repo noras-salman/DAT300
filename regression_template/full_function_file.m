@@ -1,16 +1,15 @@
-
+function full_function_file(file_name,feature_numbers,plot_option)
 
 %% ============  Initialization And Load Data set
-%% Clear and Close Figures
-clear ; close all; clc
+
 
 fprintf('Loading data ...\n');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  CHANGE THIS FOR COMPARING
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load Data
-data = load('_hour_basic_weekend');
-number_of_features=2;
+data = load(file_name);
+number_of_features=feature_numbers;
 
 %% ========================
 X = data(:, 1:number_of_features);
@@ -78,13 +77,13 @@ error_arr=[y(sample_range) predict(sample_range)];
 fprintf('error_diff= %f \',error_diff);
 
 
-plot(y(sample_range))
+plot(Xb(sample_range,2),y(sample_range),'b')
 hold on
 
 
 
-plot(predict(sample_range),'r *','LineWidth',2)
+plot(Xb(sample_range,2),predict(sample_range),plot_option,'LineWidth',2)
 
 
 
-
+end
