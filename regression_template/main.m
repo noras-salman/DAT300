@@ -7,7 +7,7 @@ clear ; close all; clc
 fprintf('Loading data ...\n');
 
 %% Load Data
-data = load('12-1210.txt');
+data = load('basic123');
 X = data(:, 1:2);
 y = data(:, 3);
 m = length(y);
@@ -47,7 +47,7 @@ subplot (3, 1, 1)
 plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
-pause;
+
 
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
@@ -65,13 +65,15 @@ predict = [ones(m,1), (weekday-mu(:,1))/sigma(:,1) ,(timestamp-mu(:,2))/sigma(:,
 
 % =====================PLOT AND ANALYISIS===============
 error_diff=sum(y-predict);
-error_arr=[y(140:300) predict(140:300)]
+
+error_arr=[y(140:300) predict(140:300)];
+
 fprintf('error_diff= %f \',error_diff);
 subplot (3, 1, 2)
-plot(y(140:300))
+plot(y(1:48))
 
 subplot (3, 1, 3)
-plot(predict(140:300))
+plot(predict(1:48))
 
 
 fprintf('Program paused. Press enter to continue.\n');

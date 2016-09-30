@@ -6,29 +6,29 @@ The dataset used could be found in the here:
 
 ## Structure
 The structure is seperated to two directories:
-- regression_template : This contain the basic linear regression code(Octave or Matlab).
+- regression_template : This contain the basic linear regression code(Octave or Matlab) + The Final DATSETS.
 - data_optimize : This contain a set of (Python) scripts to create new datasets. The directory also contain the base datasets for four winters.
 
+
+## DATASETS
+Final datasets could be found in the regression_template directory and they are:
+- hour_basic : (weekday,hour,total_load) constucted from 'winter2006-2007.txt'
+
 ## TODO
-### Create Diffrent Datasets:
-- (dayOfYear,weekday,minute,consumption) (OnlyWinter)
-- (dayOfYear,weekday,minute,consumption_past24hours,consumption) (OnlyWinter)
-#### Make three rooms into one from the dataset
-    -add the coloumns to make one(Make total load)
 
-
-#### HourBased:"Total Hour consumption"
+#### HourBased:"Total Hour load"
 It could be usefull and more accurate to predict based on a total hour consumtion instead of using a minute to minute based prediction model.
-- (dayOfYear,weekday,hour,consumption_past24hours,consumption) (OnlyWinter)
-- (dayOfYear,weekday,hour,past_hour,consumption_past24hours,consumption) (OnlyWinter)
+- hour_basic : (weekday,hour,total_load)   "**COMPLETED**"
+- hour_weekend : (weekday,hour,weekend,total_load) : adds extra feature "weekend" is a value that state if its a weekday or weekend
+
+- hour_basic_prev_hour : (weekday,hour,previous_hour,total_load) : adds extra feature "previous_hour"
+- hour_basic_prev_hour2 : (weekday,hour,previous_hour,previous_secound_hour,total_load) : adds extra feature "previous_secound_hour"
 
 #### Sliding Window
-Because of the high non-linearizability nature of electric consumption .. performing a sliding window prediction model could be a good idea to experment with.
-- (dayOfYear,weekday,minute,consumption_past24hoursconsumption_past24hours,consumption) (OnlyWinter)
-- (dayOfYear,weekday,hour,consumption_past24hoursconsumption_past24hours,consumption) (OnlyWinter)
-
-
-
+Because of the high non-linearizability nature of electric consumption .. 
+performing a sliding window prediction model could be a good idea to experment with.
+-Each Day has a model
+-Each 2 or 3 hours has a model for this day
 
 ### Error Analysis
-
+We run the algorithm on the trained data, plot them and calculate the error
