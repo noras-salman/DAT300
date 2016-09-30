@@ -21,7 +21,7 @@ Where:
 hour_based=1  # (hour_based=1 : Total_load is the total load in an hour (scound_column range = 1->24), hour_based=0: Total_load is load in one minute (scound_column range = 1->1440))
 
 #input and output files
-output_file_name='basic123'
+output_file_name='_hour_basic'
 input_file='winter2006-2007.txt'
 
 # define costum accept condition for a record (for example : only mondays and hour=12) this is done in the script part but this is just a reminder
