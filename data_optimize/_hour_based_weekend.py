@@ -58,6 +58,7 @@ error_count=0
 
 hour_load=0
 current_hour=999
+day_of_week_update=0
 ##################################
 ##         	  SCRIPT	        ##
 ##################################
@@ -94,13 +95,14 @@ with open(input_file) as f:
 
         if current_hour==int(hour):
           hour_load+=sum
+          day_of_week_update=day_of_week # the prevous hour might be in the prevous day
           continue
         else:
           active_count+=1
           weekend_marker=1
-          if day_of_week in weekend:
+          if day_of_week_update in weekend:
             weekend_marker=2
-          file_output.write(str(day_of_week)+ ','+ str(current_hour+1)+','+ str(weekend_marker)+ ','+str(hour_load)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
+          file_output.write(str(day_of_week_update)+ ','+ str(current_hour+1)+','+ str(weekend_marker)+ ','+str(hour_load)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
           current_hour=int(hour)
           hour_load=sum       
 
