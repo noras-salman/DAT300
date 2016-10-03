@@ -69,17 +69,20 @@ predict = prediction(Xb,theta,sigma,mu);
 % =====================PLOT AND ANALYISIS===============
 error_diff=sum(y-predict);
 
-error_arr=[y(sample_range) predict(sample_range)];
 
-fprintf('error_diff= %f \',error_diff);
+fprintf('error_diff= %f \n',error_diff);
 
 
-plot(y,'b')
+plot(Xb,y,strcat(plot_option,' .'))
 hold on
 
+if strcmp(plot_option,'b')==1
+plot_option='r';
+elseif strcmp(plot_option,'r')==1
+plot_option='b';
+else end
 
-
-plot(predict,plot_option,'LineWidth',2)
+plot(Xb(:,1),predict,strcat(plot_option,' *'),'LineWidth',2)
 
 
 

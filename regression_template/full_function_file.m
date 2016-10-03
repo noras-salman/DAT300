@@ -1,4 +1,4 @@
-function full_function_file(file_name,feature_numbers,plot_option)
+function full_function_file(file_name,feature_numbers,plot_option,sample_range)
 
 %% ============  Initialization And Load Data set
 
@@ -18,13 +18,6 @@ m = length(y);
 x_size=size(X, 2);
 %% Save this for plotting
 Xb=X;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  CHANGE THIS FOR COMPARING
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-sample_range=1:24 ; % What to plot and compare from predicted and original data (Example 1:24 only first 24 hours)
-
-
-
 
 %% ================ Part 1: Feature Scaling(Normalization) ================
 
@@ -77,12 +70,12 @@ error_arr=[y(sample_range) predict(sample_range)];
 fprintf('error_diff= %f \',error_diff);
 
 
-plot(Xb(sample_range,2),y(sample_range),'b')
+plot(y(sample_range),'b')
 hold on
 
 
 
-plot(Xb(sample_range,2),predict(sample_range),plot_option,'LineWidth',2)
+plot(predict(sample_range),plot_option,'LineWidth',2)
 
 
 
