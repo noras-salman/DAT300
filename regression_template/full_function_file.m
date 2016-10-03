@@ -1,4 +1,4 @@
-function full_function_file(file_name,feature_numbers,plot_option,sample_range)
+function full_function_file(file_name,feature_numbers,plot_option,sample_range,dataset_name)
 
 %% ============  Initialization And Load Data set
 
@@ -79,6 +79,8 @@ hold on
 %plot(predict(sample_range),plot_option,'LineWidth',2)
 plot(Xb(sample_range,2),predict(sample_range),plot_option,'LineWidth',2)
 
-
-
+title(strcat('STLF using dataset ',dataset_name))
+xlabel('Time of day (Hours)');
+ylabel('Electric Load (Watts)');
+legend('Real Data','Forecast')
 end
