@@ -70,12 +70,14 @@ error_arr=[y(sample_range) predict(sample_range)];
 fprintf('error_diff= %f \n',error_diff);
 
 
-plot(y(sample_range),'b')
+%plot(y(sample_range),'b')
+plot(Xb(sample_range,2),y(sample_range),'b')
 hold on
 
 
 
-plot(predict(sample_range),plot_option,'LineWidth',2)
+%plot(predict(sample_range),plot_option,'LineWidth',2)
+plot(Xb(sample_range,2),predict(sample_range),plot_option,'LineWidth',2)
 
 
 

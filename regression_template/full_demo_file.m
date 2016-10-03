@@ -1,3 +1,4 @@
+close;clear;
 monday=1:24;
 tuseday=25:48;
 wednsday=49:72;
