@@ -9,3 +9,5 @@ sunday=145:168;
 
 full_function_file('_hour_basic',2,'g *',sunday);
 full_function_file('_hour_basic_weekend',3,'r *',sunday);
+full_function_file('_hour_basic_prev_hour',3,'r -',sunday);
+full_function_file('_hour_basic_prev_2hours',4,'g -',sunday);

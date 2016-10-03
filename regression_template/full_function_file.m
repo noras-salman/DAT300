@@ -67,7 +67,7 @@ error_diff=sum(y-predict);
 
 error_arr=[y(sample_range) predict(sample_range)];
 
-fprintf('error_diff= %f \',error_diff);
+fprintf('error_diff= %f \n',error_diff);
 
 
 plot(y(sample_range),'b')
