@@ -82,5 +82,7 @@ plot(Xb(sample_range,2),predict(sample_range),plot_option,'LineWidth',2)
 title(strcat('STLF using dataset ',dataset_name))
 xlabel('Time of day (Hours)');
 ylabel('Electric Load (Watts)');
-legend('Real Data','Forecast')
+legend('Real Data','Forecast');
+axis([1 24 0 inf]);
+
 end
