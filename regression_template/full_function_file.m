@@ -84,5 +84,6 @@ xlabel('Time of day (Hours)');
 ylabel('Electric Load (Watts)');
 legend('Real Data','Forecast');
 axis([1 24 0 inf]);
-
+figurename=strcat(dataset_name,".png");
+saveas (1, figurename);
 end
