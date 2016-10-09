@@ -2,7 +2,7 @@
  %full_function_file('_hour_basic',2,'g *');
  %full_function_file('_hour_basic_weekend',3,'r *');
 close;clear;
- sample_range=1:24 ; % What to plot and compare from predicted and original data (Example 1:24 only first 24 hours)
+ sample_range=25:48 ; % What to plot and compare from predicted and original data (Example 1:24 only first 24 hours)
  
  
  data = load('_hour_basic');

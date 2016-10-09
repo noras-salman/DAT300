@@ -73,7 +73,7 @@ error_diff=sum(y-predict);
 fprintf('error_diff= %f \n',error_diff);
 
 
-plot(Xb(sample_range),y(sample_range),strcat(plot_option,' .'))
+plot(Xb(sample_range),y(sample_range),strcat(plot_option,' -'))
 hold on
 
 if strcmp(plot_option,'b')==1
@@ -82,8 +82,8 @@ elseif strcmp(plot_option,'r')==1
 plot_option='b';
 else end
 
-plot(Xb(sample_range),predict(sample_range),strcat(plot_option,' -'),'LineWidth',2)
-title(strcat('STLF - Sliding Window - using dataset ',dataset_name))
+plot(Xb(sample_range),predict(sample_range),strcat(plot_option,' -'),'LineWidth',2);
+title(strcat('STLF - Sliding Window - using dataset ',dataset_name));
 xlabel('Time of day (Hours)');
 ylabel('Electric Load (Watts)');
 legend('Real Data','Forecast');
