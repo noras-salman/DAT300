@@ -18,9 +18,9 @@ close;clear;
  mtest78=mondays((mondays(:,1)>18 & mondays(:,1)<=24),:);
 
 
- full_function_set(mtest01,1,'b',sample_range)
- full_function_set(mtest34,1,'r',sample_range)
- full_function_set(mtest56,1,'b',sample_range)
- full_function_set(mtest78,1,'r',sample_range)
+ full_function_set(mtest01,1,'b',1:6,'D1')
+ full_function_set(mtest34,1,'r',7:12,'D1')
+ full_function_set(mtest56,1,'b',13:18,'D1')
+ full_function_set(mtest78,1,'r',19:24,'D1')
  
  
