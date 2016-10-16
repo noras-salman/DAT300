@@ -1,4 +1,4 @@
-function [hours,acctual_load,forecasted_load]=window_forecast(data,feature_numbers,sample_range)
+function [hours,acctual_load,forecasted_load]=single_window_forecast(data,feature_numbers,sample_range)
 
 %% ============  Initialization And Load Data set
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,6 +41,9 @@ theta = zeros(x_size+1, 1);
 predict = forecast(Xb,theta,sigma,mu);
 
 hours=Xb(sample_range)';
+if feature_numbers==1
+hours=Xb(sample_range);
+end;
 acctual_load=y(sample_range);
 forecasted_load=predict(sample_range);
 

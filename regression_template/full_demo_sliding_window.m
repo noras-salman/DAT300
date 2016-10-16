@@ -15,14 +15,14 @@ dataset_name="D1";
 day_to_isolate=saturday;
  
 % ====== LOAD THE DATA FROM FILE 
- data = load('_hour_basic_prev_hour');
-
+ data = load('_hour_basic');
+ window_count=6;
  %+++++++++++++++++++++++++++++++++
  
  % ====== ISOLATE day
 day_of_week=data(:,1);
 isolated_dataset=data((day_of_week==day_to_isolate),:);
-isolated_dataset_size=size(isolated_dataset, 2)
+isolated_dataset_size=size(isolated_dataset, 2);
 
 % ====== DAY OF THE WEEK IN A USELESS FEATURE.. IGNORE IT
 training_set=isolated_dataset(:,2:isolated_dataset_size);
@@ -30,35 +30,30 @@ training_set_size=size(training_set, 2);
 features_cout=training_set_size-1;
 
 hour=training_set(:,1);
- 
- % ====== CONSTRUCT THE WINDOWS
- window1_set=training_set((hour<=6),:); 
- window2_set=training_set((hour>6 & hour<=12),:);
- window3_set=training_set((hour>12 & hour<=18),:);
- window4_set=training_set((hour>18 & hour<=24),:);
-
-
- full_hours=[];
+  window_size=24/window_count;
+  
+  
+   full_hours=[];
  full_acctual=[];
  full_forecast=[];
  
- [hours,acctual_load,forecasted_load]=window_forecast(window1_set,features_cout,1:6);
+ 
+ for w=1:window_count
+ 
+ lower_hour=w*window_size-window_size;
+
+
+ higer_hour=w*window_size;
+ 
+  window_set=training_set((hour>lower_hour & hour<=higer_hour),:);
+ 
+ [hours,acctual_load,forecasted_load]=single_window_forecast(window_set,features_cout,lower_hour+1:higer_hour);
  full_hours=[full_hours;hours];
  full_acctual=[full_acctual;acctual_load];
  full_forecast=[full_forecast;forecasted_load];
- [hours,acctual_load,forecasted_load]=window_forecast(window2_set,features_cout,7:12);
- full_hours=[full_hours;hours];
-  full_acctual=[full_acctual;acctual_load];
- full_forecast=[full_forecast;forecasted_load];
- [hours,acctual_load,forecasted_load]=window_forecast(window3_set,features_cout,13:18);
- full_hours=[full_hours;hours];
-  full_acctual=[full_acctual;acctual_load];
- full_forecast=[full_forecast;forecasted_load];
- [hours,acctual_load,forecasted_load]=window_forecast(window4_set,features_cout,19:24);
- full_hours=[full_hours;hours];
-  full_acctual=[full_acctual;acctual_load];
- full_forecast=[full_forecast;forecasted_load];
  
+ end;
+
  % Plot the original usage
 % =====================PLOT AND ANALYISIS===============
 
@@ -71,7 +66,7 @@ hold on
 %plot(predict(sample_range),plot_option,'LineWidth',2)
 plot(full_hours,full_forecast,'r','LineWidth',2)
 
-title(strcat('STLF using dataset ',dataset_name))
+title(strcat('Sliding window STLF using dataset ',dataset_name))
 xlabel('Time of day (Hours)');
 ylabel('Electric Load (Watts)');
 legend('Real Data','Forecast');
