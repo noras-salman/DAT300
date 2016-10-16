@@ -13,18 +13,14 @@ The structure is seperated to two directories:
 ## DATASETS
 Final datasets constucted from 'winter2006-2007.txt' could be found in the regression_template directory and they are:
 - hour_basic : (weekday,hour,total_load)   "**COMPLETED**"
-- hour_weekend : (weekday,hour,weekend_marker,total_load) : adds extra feature "weekend_marker" is a value that state if its a weekday or weekend  "**COMPLETED**"
 - hour_basic_prev_hour : (weekday,hour,previous_hour,total_load) : adds extra feature "previous_hour" "**COMPLETED**"
-- hour_basic_prev_2hours : (weekday,hour,previous_hour,previous_secound_hour,total_load) : adds extra feature "previous_secound_hour" "**COMPLETED**"
-
-## TODO
-
+- hour_basic_prev_6hours : (weekday,hour,previous_hour,previous_secound_hour,....,previous_sixth_hour, total_load) : adds extra feature "previous_secound_hour" "**COMPLETED**"
 
 #### Sliding Window
 Because of the high non-linearizability nature of electric consumption .. 
 performing a sliding window prediction model could be a good idea to experment with.
 - Each Day has a model
-- Each 2 or 3 hours has a model for this day
+- Each day has a number of windows that the forecasat is applied to.
 
 ### Error Analysis
-We run the algorithm on the trained data, plot them and calculate the error
+We run the algorithm on the trained data, plot them and calculate the error using MAPE

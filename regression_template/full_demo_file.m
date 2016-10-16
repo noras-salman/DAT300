@@ -12,3 +12,4 @@ sunday=145:168;
 %file_forecast('_hour_basic_weekend',3,'r *',sunday,'D2');
 %file_forecast('_hour_basic_prev_hour',3,'r -',wednsday,'D3');
 file_forecast('_hour_basic_prev_2hours',4,'g -',monday,'D4');
+file_forecast('_hour_basic_prev_6hours',8,'r -',monday,'D4');

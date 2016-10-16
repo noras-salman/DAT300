@@ -21,7 +21,7 @@ Where:
 hour_based=1  # (hour_based=1 : Total_load is the total load in an hour (scound_column range = 1->24), hour_based=0: Total_load is load in one minute (scound_column range = 1->1440))
 
 #input and output files
-output_file_name='hour_basic_prev_2hours'
+output_file_name='hour_basic_prev_6hours'
 input_file='winter2006-2007.txt'
 
 # define costum accept condition for a record (for example : only mondays and hour=12) this is done in the script part but this is just a reminder
@@ -105,8 +105,8 @@ with open(input_file) as f:
           #new rule <------------------
           value.append(hour_load)
 		  
-          if active_count>2:
-            file_output.write(str(day_of_week_update)+ ','+ str(current_hour+1)+ ','+ str(value[active_count-2])+ ','+ str(value[active_count-3])+','+str(hour_load)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
+          if active_count>6:
+            file_output.write(str(day_of_week_update)+ ','+ str(current_hour+1)+ ','+ str(value[active_count-2])+ ','+ str(value[active_count-3])+ ','+ str(value[active_count-4])+ ','+ str(value[active_count-4])+ ','+ str(value[active_count-5])+ ','+ str(value[active_count-6])+','+str(hour_load)+'\n') # The final ourput (add +1 the current hour to avoid zero value)
           current_hour=int(hour)
           hour_load=sum       
       
