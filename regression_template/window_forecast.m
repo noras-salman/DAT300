@@ -40,7 +40,7 @@ theta = zeros(x_size+1, 1);
 % use Xb the original data
 predict = forecast(Xb,theta,sigma,mu);
 
-hours=Xb(sample_range);
+hours=Xb(sample_range)';
 acctual_load=y(sample_range);
 forecasted_load=predict(sample_range);
 

@@ -12,19 +12,23 @@ sunday=6;
 %======= INPUT HERE ==============
 %+++++++++++++++++++++++++++++++++
 dataset_name="D1";
-day_to_isolate=friday;
+day_to_isolate=saturday;
  
 % ====== LOAD THE DATA FROM FILE 
- data = load('_hour_basic');
+ data = load('_hour_basic_prev_hour');
 
  %+++++++++++++++++++++++++++++++++
  
  % ====== ISOLATE day
 day_of_week=data(:,1);
 isolated_dataset=data((day_of_week==day_to_isolate),:);
- 
+isolated_dataset_size=size(isolated_dataset, 2)
+
 % ====== DAY OF THE WEEK IN A USELESS FEATURE.. IGNORE IT
-training_set=isolated_dataset(:,[2,3]);
+training_set=isolated_dataset(:,2:isolated_dataset_size);
+training_set_size=size(training_set, 2);
+features_cout=training_set_size-1;
+
 hour=training_set(:,1);
  
  % ====== CONSTRUCT THE WINDOWS
@@ -38,19 +42,19 @@ hour=training_set(:,1);
  full_acctual=[];
  full_forecast=[];
  
- [hours,acctual_load,forecasted_load]=window_forecast(window1_set,1,1:6);
+ [hours,acctual_load,forecasted_load]=window_forecast(window1_set,features_cout,1:6);
  full_hours=[full_hours;hours];
  full_acctual=[full_acctual;acctual_load];
  full_forecast=[full_forecast;forecasted_load];
- [hours,acctual_load,forecasted_load]=window_forecast(window2_set,1,7:12);
+ [hours,acctual_load,forecasted_load]=window_forecast(window2_set,features_cout,7:12);
  full_hours=[full_hours;hours];
   full_acctual=[full_acctual;acctual_load];
  full_forecast=[full_forecast;forecasted_load];
- [hours,acctual_load,forecasted_load]=window_forecast(window3_set,1,13:18);
+ [hours,acctual_load,forecasted_load]=window_forecast(window3_set,features_cout,13:18);
  full_hours=[full_hours;hours];
   full_acctual=[full_acctual;acctual_load];
  full_forecast=[full_forecast;forecasted_load];
- [hours,acctual_load,forecasted_load]=window_forecast(window4_set,1,19:24);
+ [hours,acctual_load,forecasted_load]=window_forecast(window4_set,features_cout,19:24);
  full_hours=[full_hours;hours];
   full_acctual=[full_acctual;acctual_load];
  full_forecast=[full_forecast;forecasted_load];
