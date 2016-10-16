@@ -1,16 +1,15 @@
-
+function file_forecast(file_name,feature_numbers,plot_option,sample_range,dataset_name)
 
 %% ============  Initialization And Load Data set
-%% Clear and Close Figures
-clear ; close all; clc
+
 
 fprintf('Loading data ...\n');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  CHANGE THIS FOR COMPARING
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load Data
-data = load('_hour_basic_weekend');
-number_of_features=2;
+data = load(file_name);
+number_of_features=feature_numbers;
 
 %% ========================
 X = data(:, 1:number_of_features);
@@ -19,13 +18,6 @@ m = length(y);
 x_size=size(X, 2);
 %% Save this for plotting
 Xb=X;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  CHANGE THIS FOR COMPARING
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-sample_range=1:24 ; % What to plot and compare from predicted and original data (Example 1:24 only first 24 hours)
-
-
-
 
 %% ================ Part 1: Feature Scaling(Normalization) ================
 
@@ -66,25 +58,26 @@ fprintf(' %f \n', theta);
 fprintf('\n');
 
 
-%% ================ Part 3: Predict ================
+%% ================ Part 3: FORECAST ================
 % use Xb the original data
-predict = prediction(Xb,theta,sigma,mu);
+predict = forecast(Xb,theta,sigma,mu);
 
 % =====================PLOT AND ANALYISIS===============
-error_diff=sum(y-predict);
+mape = MAPE(y(sample_range),predict(sample_range))
+mape_full = MAPE(y,predict)
 
-error_arr=[y(sample_range) predict(sample_range)];
-
-fprintf('error_diff= %f \',error_diff);
-
-
-plot(y(sample_range))
+%plot(y(sample_range),'b')
+plot(Xb(sample_range,2),y(sample_range),'b')
 hold on
 
+%plot(predict(sample_range),plot_option,'LineWidth',2)
+plot(Xb(sample_range,2),predict(sample_range),plot_option,'LineWidth',2)
 
-
-plot(predict(sample_range),'r *','LineWidth',2)
-
-
-
-
+title(strcat('STLF using dataset ',dataset_name))
+xlabel('Time of day (Hours)');
+ylabel('Electric Load (Watts)');
+legend('Real Data','Forecast');
+axis([1 24 0 inf]);
+figurename=strcat(dataset_name,".png");
+saveas (1, figurename);
+end
