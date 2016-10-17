@@ -8,14 +8,16 @@ friday=4;
 saturday=5;
 sunday=6;
 
-
+D1='_hour_basic';
+D2='_hour_basic_prev_hour';
+D3='_hour_basic_prev_6hours';
 %======= INPUT HERE ==============
 
-file_name='_hour_basic';
-dataset_name="D11";
-day_to_isolate=tuseday;
+file_name=D1;
+dataset_name="D1 moday 4 w";
+day_to_isolate=monday;
 
- window_count=6;
+ window_count=4;
  %+++++++++++++++++++++++++++++++++
  
 file_sliding_window(file_name,window_count,day_to_isolate,dataset_name)

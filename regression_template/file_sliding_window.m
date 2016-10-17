@@ -26,8 +26,8 @@ window_size=24/window_count;
  for w=1:window_count
 	 lower_hour=w*window_size-window_size;
 	 higer_hour=w*window_size;
-	  window_set=training_set((hour>lower_hour & hour<=higer_hour),:);
-	 [hours,acctual_load,forecasted_load]=single_window_forecast(window_set,features_cout,lower_hour+1:higer_hour);
+	 window_set=training_set((hour>lower_hour & hour<=higer_hour),:);
+	 [hours,acctual_load,forecasted_load]=single_window_forecast(window_set,features_cout,1:window_size);
 	 full_hours=[full_hours;hours];
 	 full_acctual=[full_acctual;acctual_load];
 	 full_forecast=[full_forecast;forecasted_load];
