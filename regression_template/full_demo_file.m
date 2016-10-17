@@ -8,8 +8,8 @@ saturday=121:144;
 sunday=145:168;
 
 
-file_forecast('_hour_basic',2,'r -',sunday,'D1 without a sliding window');
-%file_forecast('_hour_basic_weekend',3,'r *',sunday,'D2');
-%file_forecast('_hour_basic_prev_hour',3,'r -',wednsday,'D3');
+file_forecast('_hour_basic',2,'r -',monday,'D1 without a sliding window');
 
-%file_forecast('_hour_basic_prev_6hours',8,'r -',monday,'D4');
+file_forecast('_hour_basic_prev_hour',3,'r -',monday,'D2');
+
+file_forecast('_hour_basic_prev_6hours',8,'r -',monday,'D3');

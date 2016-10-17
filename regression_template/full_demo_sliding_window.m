@@ -10,14 +10,12 @@ sunday=6;
 
 
 %======= INPUT HERE ==============
-%+++++++++++++++++++++++++++++++++
+
+file_name='_hour_basic';
 dataset_name="D11";
-day_to_isolate=monday;
- 
-% ====== LOAD THE DATA FROM FILE 
-file_name='_hour_basic_prev_6hours';
+day_to_isolate=tuseday;
+
  window_count=6;
  %+++++++++++++++++++++++++++++++++
  
-%file_sliding_window(file_name,window_count,day_to_isolate,dataset_name)
 file_sliding_window(file_name,window_count,day_to_isolate,dataset_name)

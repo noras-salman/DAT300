@@ -63,8 +63,12 @@ fprintf('\n');
 predict = forecast(Xb,theta,sigma,mu);
 
 % =====================PLOT AND ANALYISIS===============
-mape = MAPE(y(sample_range),predict(sample_range))
+mape_day = MAPE(y(sample_range),predict(sample_range))
+max_day= max(abs(y(sample_range)-predict(sample_range)))
+min_day= min(abs(y(sample_range)-predict(sample_range)))
 mape_full = MAPE(y,predict)
+max_full = max(abs(y-predict))
+min_full = min(abs(y-predict))
 
 %plot(y(sample_range),'b')
 plot(Xb(sample_range,2),y(sample_range),'b')

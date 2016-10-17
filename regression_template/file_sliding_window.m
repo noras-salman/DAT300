@@ -37,7 +37,8 @@ window_size=24/window_count;
 % =====================PLOT AND ANALYISIS===============
 
 mape = MAPE(full_acctual,full_forecast)
-
+max_full = max(abs(full_acctual-full_forecast))
+min_full = min(abs(full_acctual-full_forecast))
 
 plot(full_hours,full_acctual,'b','LineWidth',2)
 hold on
