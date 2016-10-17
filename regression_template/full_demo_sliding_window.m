@@ -13,11 +13,11 @@ D2='_hour_basic_prev_hour';
 D3='_hour_basic_prev_6hours';
 %======= INPUT HERE ==============
 
-file_name=D1;
-dataset_name="D1 moday 4 w";
+file_name=D3;
+dataset_name="D3 monday 6 w";
 day_to_isolate=monday;
 
- window_count=4;
+ window_count=6;
  %+++++++++++++++++++++++++++++++++
  
 file_sliding_window(file_name,window_count,day_to_isolate,dataset_name)
