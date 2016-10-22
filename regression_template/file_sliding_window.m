@@ -1,4 +1,4 @@
-function file_sliding_window(file_name,window_count,day_to_isolate,dataset_name)
+function [mape,max_full,min_full]=file_sliding_window(file_name,window_count,day_to_isolate,dataset_name)
 
 
  
@@ -43,7 +43,7 @@ min_full = min(abs(full_acctual-full_forecast))
 plot(full_hours,full_acctual,'b','LineWidth',2)
 hold on
 
-%plot(predict(sample_range),plot_option,'LineWidth',2)
+
 plot(full_hours,full_forecast,'r','LineWidth',2)
 
 title(strcat('Sliding window STLF using dataset ',dataset_name))
