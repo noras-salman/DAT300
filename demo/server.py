@@ -1,10 +1,54 @@
-
+#!/usr/bin/python
 import socket
 import sys
 import json
 import matplotlib.pyplot as plt
 from numpy import loadtxt
+from itertools import islice
 
+def getWindow(hour):
+  if windows==1:
+    return 1
+  else:
+    window_size=int(24/window_count);       
+    rangei=list(range(1,window_count+1))
+    for w in rangei:	
+	  lower_hour=w*window_count-window_count;
+	  higer_hour=w*window_count;
+	  if hour>lower_hour and hour<=higer_hour:
+	    return w
+
+def predict(xvals):
+  theta=[]             
+  with open(datadir+'theta', 'r') as f:              
+    first_line = f.readline()
+    first_line =first_line.rstrip('\n')
+    theta=first_line.split(',')
+  predection=0;
+  
+  features=normalize(xvals)
+  
+  for i in range(0, len(features)):
+   
+    predection=predection+float(features[i])*float(theta[i])
+  return predection
+
+def normalize(xvals):
+  mu=[]
+  sigma=[]
+
+  with open(datadir+'mu', 'r') as f:
+    first_line = f.readline()
+    first_line =first_line.rstrip('\n')
+    mu=first_line.split(',')
+  with open(datadir+'sigma', 'r') as f:
+    first_line = f.readline()
+    first_line =first_line.rstrip('\n')
+    sigma=first_line.split(',')
+  features=[1]
+  for i in range(0, len(xvals)-1): #skip the last one because its the actual load
+    features.append((float(xvals[i])-float(mu[i]))/float(sigma[i]))
+  return features;
 
 dataset_dir=['data/d1','data/d2','data/d3']
 model=['model1','model2']
@@ -39,31 +83,16 @@ while True:
                 row.pop(0)
                 m=int(row[0])
                 row.pop(0)
+                window_count=1
                 if m==2:
-                  w=row[0]
+                  window_count=int(row[0])
                   row.pop(0)
+                xvals=row #only x values left
                 datadir=dataset_dir[d-1]+'/'+model[m-1]+'/'
-                theta=[]
-                mu=[]
-                sigma=[]
-                with open(datadir+'theta', 'r') as f:
-                  first_line = f.readline()
-                  theta=first_line.split(',')
-                with open(datadir+'mu', 'r') as f:
-                  first_line = f.readline()
-                  mu=first_line.split(',')
-                with open(datadir+'sigma', 'r') as f:
-                  first_line = f.readline()
-                  sigma=first_line.split(',')
-                #Normailize
-                features=[1]
-                for i in range(0, len(row)-1):
-                  features.append((float(row[i])-float(mu[i]))/float(sigma[i]))
-				  #Do the calculation
-                predection=0;
-                for i in range(0, len(row)-1):
-                  predection=predection+float(row[i])*float(theta[i])
-				  #send the forecast
+
+                predection=predict(xvals)
+
+				  #send the forecast (should be a string buffer)
                 connection.sendall(str(predection))
             else:
                 print >>sys.stderr, 'no more data from', client_address
@@ -93,8 +122,5 @@ while True:
 
 # take an array solve and send
 # normalize
-
-#
-
 
 

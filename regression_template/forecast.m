@@ -17,9 +17,4 @@ end;
 
 prediction =scaled_features *theta;
 
-
-theta
-sigma
-mu
-
 end

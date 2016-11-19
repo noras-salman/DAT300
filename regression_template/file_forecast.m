@@ -62,6 +62,9 @@ fprintf('\n');
 % use Xb the original data
 predict = forecast(Xb,theta,sigma,mu);
 
+dlmwrite('theta',theta')
+dlmwrite('sigma',sigma)
+dlmwrite('mu',mu)
 % =====================PLOT AND ANALYISIS===============
 mape_day = MAPE(y(sample_range),predict(sample_range))
 max_day= max(abs(y(sample_range)-predict(sample_range)))

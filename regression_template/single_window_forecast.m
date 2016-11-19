@@ -40,6 +40,10 @@ theta = zeros(x_size+1, 1);
 % use Xb the original data
 predict = forecast(Xb,theta,sigma,mu);
 
+dlmwrite('theta',theta','-append')
+dlmwrite('sigma',sigma,'-append')
+dlmwrite('mu',mu,'-append')
+
 hours=Xb(sample_range)';
 if feature_numbers==1
 hours=Xb(sample_range);

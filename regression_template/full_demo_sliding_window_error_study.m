@@ -13,8 +13,8 @@ D2='_hour_basic_prev_hour';
 D3='_hour_basic_prev_6hours';
 %======= INPUT HERE ==============
 
-file_name=D3;
-window_count=12;
+file_name=D1;
+window_count=2;
 day_to_isolate=monday;
 
 dataset_name="D3 (Model II) 12 windows - Week";
