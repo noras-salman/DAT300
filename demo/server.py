@@ -7,7 +7,6 @@ from numpy import loadtxt
 
 
 dataset_dir=['data/d1','data/d2','data/d3']
-dataset=['_hour_basic','_hour_basic_prev_hour','_hour_basic_prev_6hours']
 model=['model1','model2']
 
 
@@ -43,7 +42,7 @@ while True:
                 if m==2:
                   w=row[0]
                   row.pop(0)
-                datadir=dataset_dir[d-1]+'/'+model[d-1]+'/'
+                datadir=dataset_dir[d-1]+'/'+model[m-1]+'/'
                 theta=[]
                 mu=[]
                 sigma=[]
