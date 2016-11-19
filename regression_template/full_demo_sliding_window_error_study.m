@@ -14,10 +14,13 @@ D3='_hour_basic_prev_6hours';
 %======= INPUT HERE ==============
 
 file_name=D3;
-dataset_name="D3 (Model II) 12 windows - Week";
+window_count=12;
 day_to_isolate=monday;
 
- window_count=12;
+dataset_name="D3 (Model II) 12 windows - Week";
+
+
+
  %+++++++++++++++++++++++++++++++++
  %file_sliding_window(file_name,window_count,day_to_isolate,dataset_name)
  
