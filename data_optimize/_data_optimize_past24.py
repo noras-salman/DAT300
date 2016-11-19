@@ -31,13 +31,12 @@ minutes since midnight (0-1440)
 load in previous 10 minute (we will do a window that slide every 10 minutes)
 
 '''
-file_output = open('with_past24.txt','w')
 count=0
 value=[]
 history_value=[]
 time_s=[]
 print "Start reading file.."
-with open('winter2006-2007.txt') as f:
+with open('_hour_basic') as f:
   for line in f:
     # Deal with data row by row
     row=line.split(';')
