@@ -26,6 +26,8 @@ performing a sliding window prediction model could be a good idea to experment w
 - Each Day has a model
 - Each day has a number of windows that the forecasat is applied to.
 
+<img src="regression_training/D2%20(Model%20II)%208%20windows%20-%20friday_sliding_window_forecast.png" width="250">
+
 ### Error Analysis
 We run the algorithm on the trained data, plot them and calculate the error using MAPE,MIN,MAX
 
